@@ -4,10 +4,10 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 
-
-
 ------ MAIN SETTINGS ------
 -- require 'lv-settings'
+lvim.colorscheme = 'lunar'
+lvim.transparent_window = true
 lvim.leader = ';'
 
 ------ OPTIONS ------
@@ -42,7 +42,6 @@ vim.keymap.del({ 'x', 'o' }, 'x')
 vim.keymap.del({ 'x', 'o' }, 'X')
 
 -- Setup Undotree
--- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 lvim.keys.normal_mode["<leader>u"] = vim.cmd.UndotreeToggle
 
 -- Setup Harpoon
@@ -142,6 +141,10 @@ formatters.setup {
 lvim.builtin.which_key.mappings["u"] = { "<cmd>UndotreeToggle<cr>", "UndoTree" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" }
 lvim.builtin.which_key.mappings["r"] = { name = "Weird Replace thing" }
+lvim.builtin.which_key.mappings["n"] = { name = "Explorer" }
+lvim.builtin.which_key.mappings["h"] = {}
+lvim.builtin.which_key.mappings["a"] = { name = "Select All" }
+lvim.builtin.which_key.mappings["e"] = {}
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
@@ -152,4 +155,3 @@ lvim.builtin.which_key.mappings["r"] = { name = "Weird Replace thing" }
 --   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 -- }
-

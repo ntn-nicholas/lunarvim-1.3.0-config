@@ -6,6 +6,8 @@ local git_add = function()
   local node = api.tree.get_node_under_cursor()
   local gs = node.git_status.file
 
+  if gs == nil and node.git_status.dir == nil then return end
+
   -- If the current node is a directory get children status
   if gs == nil then
     gs = (node.git_status.dir.direct ~= nil and node.git_status.dir.direct[1])
@@ -114,7 +116,6 @@ local function on_attach(bufnr)
   vim.keymap.set('n', '<F2>', api.fs.rename, opts('Rename'))
   vim.keymap.set('n', ' ', git_add, opts('Git stage/unstage'))
   vim.keymap.set('n', '<Esc>', api.tree.close, opts('Close'))
---   { key = '<Esc>', action = "close" }
 
 end
 

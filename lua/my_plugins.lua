@@ -192,8 +192,27 @@ lvim.plugins = {
     end
   },
 
-  -- Themes
-  'tomasiser/vim-code-dark',
+  -- ChatGPT
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("chatgpt").setup({
+  --       api_key_cmd = "~/.config/lvim/api",
+  --       popup_input = {
+  --         submit = "<C-/>"
+  --       }
+  --     })
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim"
+  --   }
+  -- },
+
+    -- Themes
+    'tomasiser/vim-code-dark',
   'marko-cerovac/material.nvim',
   'sainnhe/sonokai',
 }
