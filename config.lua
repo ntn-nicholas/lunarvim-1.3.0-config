@@ -7,7 +7,9 @@
 ------ MAIN SETTINGS ------
 -- require 'lv-settings'
 lvim.colorscheme = 'lunar'
-lvim.transparent_window = true
+-- lvim.transparent_window = true
+
+-- 💀💀💀💀💀💀
 lvim.leader = ';'
 
 ------ OPTIONS ------
@@ -21,16 +23,16 @@ require 'keymaps'
 
 
 
--- WSL clipboard support
-vim.cmd([[
-    let s:clip='/mnt/c/Windows/System32/clip.exe'
-    if executable(s:clip)
-        augroup WSLYank
-            autocmd!
-            autocmd TextYankPost * if v:event.operator ==# 'y' | call system('cat |' . s:clip, @0) | endif
-        augroup END
-    endif
-]])
+-- WSL clipboard support (NOT FOR BO HUNG COMPUTER)
+-- vim.cmd([[
+--     let s:clip='/mnt/c/Windows/System32/clip.exe'
+--     if executable(s:clip)
+--         augroup WSLYank
+--             autocmd!
+--             autocmd TextYankPost * if v:event.operator ==# 'y' | call system('cat |' . s:clip, @0) | endif
+--         augroup END
+--     endif
+-- ]])
 
 -- Symbols-Outline setup
 require("symbols-outline").setup()
@@ -45,19 +47,19 @@ vim.keymap.del({ 'x', 'o' }, 'X')
 lvim.keys.normal_mode["<leader>u"] = vim.cmd.UndotreeToggle
 
 -- Setup Harpoon
-require 'harpoon'
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+-- require 'harpoon'
+-- local mark = require("harpoon.mark")
+-- local ui = require("harpoon.ui")
 
-lvim.keys.normal_mode['<leader>mf'] = mark.add_file
-lvim.keys.normal_mode['<M-m>'] = ui.toggle_quick_menu
+-- lvim.keys.normal_mode['<leader>mf'] = mark.add_file
+-- lvim.keys.normal_mode['<M-m>'] = ui.toggle_quick_menu
 
-lvim.keys.normal_mode['<leader>m1'] = function() ui.nav_file(1) end
-lvim.keys.normal_mode['<leader>m2'] = function() ui.nav_file(2) end
-lvim.keys.normal_mode['<leader>m3'] = function() ui.nav_file(3) end
-lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
-lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
-lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
+-- lvim.keys.normal_mode['<leader>m1'] = function() ui.nav_file(1) end
+-- lvim.keys.normal_mode['<leader>m2'] = function() ui.nav_file(2) end
+-- lvim.keys.normal_mode['<leader>m3'] = function() ui.nav_file(3) end
+-- lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
+-- lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
+-- lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
 
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
@@ -139,13 +141,14 @@ formatters.setup {
 
 
 -- Add to WhichKey
-lvim.builtin.which_key.mappings["u"] = { "<cmd>UndotreeToggle<cr>", "UndoTree" }
-lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" }
-lvim.builtin.which_key.mappings["r"] = { name = "Weird Replace thing" }
+lvim.builtin.which_key.mappings["u"] = { "<cmd>UndotreeToggle<cr>", "Undo History" }
+lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "File Outline" }
+lvim.builtin.which_key.mappings["r"] = {}
 lvim.builtin.which_key.mappings["n"] = { name = "Explorer" }
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.which_key.mappings["a"] = { name = "Select All" }
 lvim.builtin.which_key.mappings["e"] = {}
+lvim.builtin.which_key.mappings["g"]["p"].name = "Goto Preview"
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
