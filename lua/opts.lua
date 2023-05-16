@@ -15,11 +15,14 @@ vim.opt.expandtab = true -- converts tab to whitespace
 vim.opt.shiftwidth = 4 -- wifth for autoindentation
 vim.opt.shiftround = true -- when shifting lines, round the indentation
 vim.opt.autoread = true -- automatically update file if it is updated elsewhere
+-- 💀💀💀💀💀💀💀💀
 vim.opt.autowrite = true -- automatically saves file on normal mode
 vim.opt.number = true
+-- 💀💀💀💀💀💀💀💀
 vim.opt.relativenumber = true -- add line numbers
 -- get bash-like tab completions
 vim.opt.wildmode = "list:longest"
+-- 💀💀💀💀💀💀💀💀
 vim.opt.cc = { 100, 120 } -- vim.opt.an 100/120 column border for good coding style
 vim.opt.mouse = "a" -- enable mouse click
 -- vim.opt.clipboard+=unnamedplus using system clipboard
@@ -31,9 +34,11 @@ vim.opt.ttyfast = true -- Speed up scrolling in Vim
 -- vim.opt.spell            -- enable spell check (may need to download language package)
 vim.opt.swapfile = false -- disable creating swap file
 -- Directory to store backup files.set
+-- 💀💀💀💀💀💀💀💀
 vim.opt.backupdir = HOME .. "/.cache/nvim"
 vim.opt.backup = false
 vim.opt.writebackup = false
+-- 💀💀💀💀💀💀💀💀
 vim.opt.undodir = HOME .. '/.nvim/nvim/undodir'
 vim.opt.undofile = true
 vim.opt.belloff = 'all' -- remove visual bell

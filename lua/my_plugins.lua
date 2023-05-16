@@ -39,6 +39,9 @@ lvim.plugins = {
     ft = {"fugitive"}
   },
 
+  -- Ctag generation
+  'ludovicchabant/vim-gutentags',
+
   -- Treesitter stuff
   {
     "windwp/nvim-ts-autotag",
@@ -70,12 +73,13 @@ lvim.plugins = {
   },
 
   -- Automatically save on exit insert mode
-  {
-    "Pocco81/auto-save.nvim",
-    config = function()
-      require("auto-save").setup()
-    end,
-  },
+  -- 💀💀💀💀💀💀💀
+  -- {
+  --   "Pocco81/auto-save.nvim",
+  --   config = function()
+  --     require("auto-save").setup()
+  --   end,
+  -- },
 
   -- Restores cursor to where we quit a file last
   {
@@ -113,11 +117,11 @@ lvim.plugins = {
   },
 
   -- Mark files for moving back and forth
-  "ThePrimeagen/harpoon",
+  -- "ThePrimeagen/harpoon",
   -- ;u for undo history
   'mbbill/undotree',
   -- Keep track of vim usage
-  'wakatime/vim-wakatime',
+  -- 'wakatime/vim-wakatime',
 
   -- Utility plugins
   'tpope/vim-surround',
@@ -211,48 +215,49 @@ lvim.plugins = {
   --   }
   -- },
   -- Backseater code with (:Backseat)
-  {
-    "james1236/backseat.nvim",
-    config = function()
-      require("backseat").setup({
-        openai_api_key = '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', -- Get yours from platform.openai.com/account/api-keys
-        openai_model_id = 'gpt-3.5-turbo',
-        -- language = 'english',
-        -- split_threshold = 100,
-        -- additional_instruction = "Respond snarkily", -- (GPT-3 will probably deny this request, but GPT-4 complies)
-        highlight = {
-            icon = '󰕾', -- ''
-            group = 'LspReferenceText',
-        }
-      })
-    end
-  },
+  -- {
+  --   "james1236/backseat.nvim",
+  --   config = function()
+  --     require("backseat").setup({
+  --       openai_api_key = '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', -- Get yours from platform.openai.com/account/api-keys
+  --       openai_model_id = 'gpt-3.5-turbo',
+  --       -- language = 'english',
+  --       -- split_threshold = 100,
+  --       -- additional_instruction = "Respond snarkily", -- (GPT-3 will probably deny this request, but GPT-4 complies)
+  --       highlight = {
+  --           icon = '󰕾', -- ''
+  --           group = 'LspReferenceText',
+  --       }
+  --     })
+  --   end
+  -- },
 
   -- Hint when you type
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function()
-      require"lsp_signature".setup({
-        doc_lines = 0,
-        hint_enable = false,
-        floating_window_off_y = -2,
-      })
-    end,
-  },
+  -- 💀💀💀💀💀💀💀💀💀
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require"lsp_signature".setup({
+  --       doc_lines = 0,
+  --       hint_enable = false,
+  --       floating_window_off_y = -2,
+  --     })
+  --   end,
+  -- },
 
   -- Java JDTLS
-  {
-    'mfussenegger/nvim-jdtls',
-    event = "BufRead",
-  },
+  -- {
+  --   'mfussenegger/nvim-jdtls',
+  --   event = "BufRead",
+  -- },
 
   -- Python Stuff
-  "ChristianChiarulli/swenv.nvim",
-  "stevearc/dressing.nvim",
-  "mfussenegger/nvim-dap-python",
-  "nvim-neotest/neotest",
-  "nvim-neotest/neotest-python",
+  -- "ChristianChiarulli/swenv.nvim",
+  -- "stevearc/dressing.nvim",
+  -- "mfussenegger/nvim-dap-python",
+  -- "nvim-neotest/neotest",
+  -- "nvim-neotest/neotest-python",
 
   -- Themes
   'tomasiser/vim-code-dark',
