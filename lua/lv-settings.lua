@@ -24,7 +24,7 @@
 -- lvim.builtin.cmp.mapping["<Tab>"].i = function ()
 -- lvim.builtin.cmp.mapping["<Tab>"].s = function ()
 -- lvim.builtin.cmp.mapping["<Up>"].i = function ()
--- lvim.builtin.cmp.snippet.expand = function ()
+-- lvim.builtin.cmp.snippet.expand = function () end
 -- lvim.builtin.cmp.sources["2"].entry_filter = function ()
 -- lvim.builtin.comment.pre_hook = function ()
 -- lvim.builtin.lir.float.win_opts = function ()
@@ -56,8 +56,8 @@
 -- lvim.builtin.telescope.defaults.mappings.i["<CR>"] = function ()
 -- lvim.builtin.telescope.defaults.mappings.n["<C-n>"] = function ()
 -- lvim.builtin.telescope.defaults.mappings.n["<C-p>"] = function ()
--- lvim.builtin.telescope.defaults.mappings.n["<C-q>"] = function ()
 -- lvim.builtin.telescope.pickers.buffers.mappings.i["<C-d>"] = function ()
+-- lvim.builtin.telescope.defaults.mappings.n["<C-q>"] = function ()
 -- lvim.builtin.telescope.pickers.buffers.mappings.n.dd = function ()
 -- lvim.builtin.theme.tokyonight.options.on_highlights = function ()
 -- lvim.builtin.treesitter.highlight.disable = function ()

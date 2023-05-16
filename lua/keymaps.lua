@@ -4,6 +4,9 @@ local function map(mode, lhs, rhs)
   })
 end
 
+-- Luasnip snippet jumping
+lvim.keys.insert_mode['<c-.>'] = ":lua require'luasnip'.jump(1)<cr>"
+
 -- ;n for explorer
 lvim.keys.normal_mode["<leader>n"] = ":NvimTreeToggle<CR>"
 
@@ -43,8 +46,7 @@ lvim.keys.normal_mode["<F8>p"] = ':w<CR>:!python3.9 %<CR>'
 lvim.keys.normal_mode["<F10>"] = function()
   local filetype = vim.bo.filetype
   if filetype == 'c' or filetype == 'cpp' then
-    vim.cmd('write')
-    vim.cmd('make %< && ./%<')
+    vim.cmd('make %<')
   elseif filetype == 'rust' then
     vim.cmd('write')
     vim.cmd('!cargo run')
