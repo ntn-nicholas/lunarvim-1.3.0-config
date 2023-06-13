@@ -135,6 +135,7 @@ setup.renderer.icons.glyphs.git = {
   -- ignored = "◌",
 }
 setup.renderer.icons.git_placement = 'after'
+setup.renderer.group_empty = true
 setup.on_attach = on_attach
 
 -- setup.view.mappings.list = {
