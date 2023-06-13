@@ -48,3 +48,9 @@ vim.g.loaded_perl_provider = 0
 -- vim.g.ale_disable_lsp = 1
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 100
+
+-- Set wrap
+vim.opt.breakindent = true
+vim.opt.breakindentopt = "sbr"
+vim.opt.showbreak = "↪>\\"
+vim.opt.wrap = true
