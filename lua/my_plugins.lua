@@ -116,13 +116,14 @@ lvim.plugins = {
   "ThePrimeagen/harpoon",
   -- ;u for undo history
   'mbbill/undotree',
-  -- Keep track of vim usage
-  'wakatime/vim-wakatime',
 
   -- Utility plugins
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'ggandor/leap.nvim',
+
+  -- TMUX plugins
+  'christoomey/vim-tmux-navigator',
 
   'tpope/vim-sleuth',
   'mattn/emmet-vim',
@@ -258,4 +259,5 @@ lvim.plugins = {
   'tomasiser/vim-code-dark',
   'marko-cerovac/material.nvim',
   'sainnhe/sonokai',
+  'catppuccin/nvim'
 }

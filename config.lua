@@ -6,7 +6,7 @@
 
 ------ MAIN SETTINGS ------
 -- require 'lv-settings'
-lvim.colorscheme = 'lunar'
+lvim.colorscheme = 'catppuccin-macchiato'
 lvim.transparent_window = true
 lvim.leader = ';'
 
