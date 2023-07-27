@@ -144,6 +144,9 @@ lvim.plugins = {
     end,
   },
 
+  -- Fold import lines
+  'pseewald/vim-anyfold',
+
   -- Better quickfix window
   {
     "kevinhwang91/nvim-bqf",
