@@ -23,7 +23,6 @@ lvim.keys.normal_mode["<leader>r"] = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Le
 -- Allows using jk and kj as alternative Esc
 lvim.keys.insert_mode["jk"] = '<Esc><Esc>'
 lvim.keys.insert_mode["kj"] = '<Esc><Esc>'
-lvim.keys.insert_mode["<C-c>"] = '<Esc>'
 
 lvim.keys.normal_mode["<c-w>t"] = '<c-w>ji'
 

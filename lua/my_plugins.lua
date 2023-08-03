@@ -92,7 +92,7 @@ lvim.plugins = {
     end,
   },
 
-  -- Preview window?
+  -- Preview window for goto
   {
     "rmagatti/goto-preview",
     config = function()

@@ -33,7 +33,7 @@ vim.cmd([[
 ]])
 
 -- Symbols-Outline setup
-require("symbols-outline").setup()
+require("symbols-outline").setup({ width = 20 })
 lvim.keys.normal_mode["<leader>o"] = vim.cmd.SymbolsOutline
 
 -- Setup Leap
@@ -56,6 +56,7 @@ lvim.keys.normal_mode['<leader>m1'] = function() ui.nav_file(1) end
 lvim.keys.normal_mode['<leader>m2'] = function() ui.nav_file(2) end
 lvim.keys.normal_mode['<leader>m3'] = function() ui.nav_file(3) end
 lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
+
 lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
 lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
 
