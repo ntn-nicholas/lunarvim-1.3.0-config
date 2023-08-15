@@ -120,6 +120,8 @@ lvim.plugins = {
   -- Utility plugins
   'tpope/vim-surround',
   'tpope/vim-repeat',
+
+  -- s and S for leap motions
   'ggandor/leap.nvim',
 
   -- TMUX plugins
