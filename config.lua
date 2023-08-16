@@ -6,7 +6,7 @@
 
 ------ MAIN SETTINGS ------
 -- require 'lv-settings'
-lvim.colorscheme = 'lunar'
+lvim.colorscheme = 'catppuccin-macchiato'
 lvim.transparent_window = true
 lvim.leader = ';'
 
@@ -58,6 +58,22 @@ lvim.keys.normal_mode['<leader>m3'] = function() ui.nav_file(3) end
 lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
 lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
 lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
+
+-- Setup tmux navigator
+-- Disable tmux navigator when zooming the Vim pane
+vim.g.tmux_navigator_disable_when_zoomed = 1
+
+-- Setup catppuccin
+require("catppuccin").setup({
+    integrations = {
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        leap = true,
+        lsp_trouble = true,
+        which_key = true
+    }
+})
 
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
@@ -146,6 +162,7 @@ lvim.builtin.which_key.mappings["n"] = { name = "Explorer" }
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.which_key.mappings["a"] = { name = "Select All" }
 lvim.builtin.which_key.mappings["e"] = {}
+lvim.builtin.which_key.mappings["t"] = { "<cmd>TroubleToggle<cr>", "Trouble"}
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",

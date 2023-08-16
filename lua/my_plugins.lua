@@ -112,6 +112,10 @@ lvim.plugins = {
     end
   },
 
+  -- TMUX Utilities
+  -- Navigate seamlessly between tmux and vim
+  "christoomey/vim-tmux-navigator",
+
   -- Mark files for moving back and forth
   "ThePrimeagen/harpoon",
   -- ;u for undo history
@@ -258,4 +262,5 @@ lvim.plugins = {
   'tomasiser/vim-code-dark',
   'marko-cerovac/material.nvim',
   'sainnhe/sonokai',
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
 }
