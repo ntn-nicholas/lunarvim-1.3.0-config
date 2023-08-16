@@ -5,7 +5,6 @@
 
 
 ------ MAIN SETTINGS ------
--- require 'lv-settings'
 lvim.colorscheme = 'catppuccin-macchiato'
 lvim.transparent_window = true
 lvim.leader = ';'
@@ -32,17 +31,10 @@ vim.cmd([[
     endif
 ]])
 
--- Symbols-Outline setup
-require("symbols-outline").setup({ width = 20 })
-lvim.keys.normal_mode["<leader>o"] = vim.cmd.SymbolsOutline
-
 -- Setup Leap
 require('leap').add_default_mappings()
 vim.keymap.del({ 'x', 'o' }, 'x')
 vim.keymap.del({ 'x', 'o' }, 'X')
-
--- Setup Undotree
-lvim.keys.normal_mode["<leader>u"] = vim.cmd.UndotreeToggle
 
 -- Setup Harpoon
 require 'harpoon'
@@ -83,9 +75,10 @@ lvim.builtin.telescope.defaults.mappings = {
 ------ PLUGIN OPTIONS ------
 require 'plugins/treesitter'
 require 'plugins/nvimtree'
+require 'plugins/whichkey'
 
 
--- Optional LSP Stuff
+-- LSP Stuff
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
@@ -164,25 +157,3 @@ formatters.setup {
 -- local opt = vim.opt
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-
-
--- Add to WhichKey
-lvim.builtin.which_key.mappings["u"] = { "<cmd>UndotreeToggle<cr>", "UndoTree" }
-lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" }
-lvim.builtin.which_key.mappings["r"] = { name = "Weird Replace thing" }
-lvim.builtin.which_key.mappings["n"] = { name = "Explorer" }
-lvim.builtin.which_key.mappings["h"] = {}
-lvim.builtin.which_key.mappings["a"] = { name = "Select All" }
-lvim.builtin.which_key.mappings["e"] = {}
-lvim.builtin.which_key.mappings["z"] = { "zA", "Toggle Fold" }
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
--- }

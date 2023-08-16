@@ -20,7 +20,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true -- add line numbers
 -- get bash-like tab completions
 vim.opt.wildmode = "list:longest"
-vim.opt.cc = { 100, 120 } -- vim.opt.an 100/120 column border for good coding style
+vim.opt.cc = { 120 } -- vim.opt.an 100/120 column border for good coding style
 vim.opt.mouse = "a" -- enable mouse click
 -- vim.opt.clipboard+=unnamedplus using system clipboard
 vim.opt.list = true -- Display unprintable characters f12 - switches
