@@ -322,4 +322,7 @@ lvim.plugins = {
     'mfussenegger/nvim-jdtls',
     event = "BufRead",
   },
+
+  -- AWS S3 Edit
+  { 'kiran94/s3edit.nvim', config = true, cmd = "S3Edit"},
 }
