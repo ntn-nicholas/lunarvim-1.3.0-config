@@ -21,18 +21,6 @@ local capabilities = require("lvim.lsp").common_capabilities()
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
--- Setup Amazon Brazil functionality
-local ws_folders_jdtls = {}
-if root_dir then
- local file = io.open(root_dir .. "/.bemol/ws_root_folders")
- if file then
-  for line in file:lines() do
-   table.insert(ws_folders_jdtls, "file://" .. line)
-  end
-  file:close()
- end
-end
-
 -- Setup Testing and Debugging
 local bundles = {}
 local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
@@ -48,6 +36,7 @@ vim.list_extend(
 lvim.builtin.dap.active = true
 local config = {
   cmd = {
+    -- 💀💀
     "/usr/lib/jvm/java-17-amazon-corretto.x86_64/bin/java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
@@ -81,6 +70,7 @@ local config = {
         runtimes = {
           {
             name = "JavaSE-1.8",
+            -- 💀💀
             path = "/usr/lib/jvm/java-1.8.0-amazon-corretto",
           },
         },
@@ -110,8 +100,7 @@ local config = {
     extendedClientCapabilities = extendedClientCapabilities,
   },
   init_options = {
-    bundles = bundles,
-    workspaceFolders = ws_folders_jdtls,
+    bundles = bundles
   },
 }
 
@@ -139,26 +128,6 @@ formatters.setup {
 
 require("jdtls").start_or_attach(config)
 
-function BEMOL()
- local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory'})[1]
- local ws_folders_lsp = {}
- if bemol_dir then
-  local file = io.open(bemol_dir .. '/ws_root_folders', 'r')
-  if file then
-
-   for line in file:lines() do
-    table.insert(ws_folders_lsp, line)
-   end
-   file:close()
-  end
- end
-
- for _, line in ipairs(ws_folders_lsp) do
-  vim.lsp.buf.add_workspace_folder(line)
- end
-
-end
-BEMOL()
 
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
