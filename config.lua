@@ -5,7 +5,6 @@
 
 
 ------ MAIN SETTINGS ------
--- require 'lv-settings'
 lvim.colorscheme = 'catppuccin-macchiato'
 lvim.transparent_window = true
 lvim.leader = ';'
@@ -32,17 +31,10 @@ vim.cmd([[
     endif
 ]])
 
--- Symbols-Outline setup
-require("symbols-outline").setup()
-lvim.keys.normal_mode["<leader>o"] = vim.cmd.SymbolsOutline
-
 -- Setup Leap
 require('leap').add_default_mappings()
 vim.keymap.del({ 'x', 'o' }, 'x')
 vim.keymap.del({ 'x', 'o' }, 'X')
-
--- Setup Undotree
-lvim.keys.normal_mode["<leader>u"] = vim.cmd.UndotreeToggle
 
 -- Setup Harpoon
 require 'harpoon'
@@ -56,6 +48,7 @@ lvim.keys.normal_mode['<leader>m1'] = function() ui.nav_file(1) end
 lvim.keys.normal_mode['<leader>m2'] = function() ui.nav_file(2) end
 lvim.keys.normal_mode['<leader>m3'] = function() ui.nav_file(3) end
 lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
+
 lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
 lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
 
@@ -98,9 +91,11 @@ lvim.builtin.telescope.defaults.mappings = {
 ------ PLUGIN OPTIONS ------
 require 'plugins/treesitter'
 require 'plugins/nvimtree'
+require 'plugins/whichkey'
 
 
--- Optional LSP Stuff
+-- LSP Stuff
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 -- lvim.lsp.installer.setup.ensure_installed = {
@@ -153,23 +148,28 @@ formatters.setup {
 --   },
 -- }
 
+-- Setup Vim anyfold
+-- vim.cmd([[
+-- augroup anyfold
+--     autocmd!
+--     autocmd Filetype java,python,lua AnyFoldActivate
+-- augroup END
 
--- Add to WhichKey
-lvim.builtin.which_key.mappings["u"] = { "<cmd>UndotreeToggle<cr>", "UndoTree" }
-lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" }
-lvim.builtin.which_key.mappings["r"] = { name = "Weird Replace thing" }
-lvim.builtin.which_key.mappings["n"] = { name = "Explorer" }
-lvim.builtin.which_key.mappings["h"] = {}
-lvim.builtin.which_key.mappings["a"] = { name = "Select All" }
-lvim.builtin.which_key.mappings["e"] = {}
-lvim.builtin.which_key.mappings["t"] = { "<cmd>TroubleToggle<cr>", "Trouble"}
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
--- }
+-- " disable anyfold for large files
+-- let g:LargeFile = 1000000 " file is large if size greater than 1MB
+-- autocmd BufReadPre,BufRead * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+-- function LargeFile()
+--     augroup anyfold
+--         autocmd! " remove AnyFoldActivate
+--         autocmd Filetype java,python,lua setlocal foldmethod=indent " fall bacbk to indent folding
+--     augroup END
+-- endfunction
+
+-- let g:anyfold_identify_comments=2 " more rigor to identify comments"
+-- let g:anyfold_fold_comments=1 " fold comments by default"
+-- let g:anyfold_comments=['comment','string','external','include']
+-- ]])
+
+-- local opt = vim.opt
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"

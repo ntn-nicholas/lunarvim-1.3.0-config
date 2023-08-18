@@ -1,52 +1,17 @@
 lvim.plugins = {
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
 
-  -- Sidebar minimap
-  -- {
-  --   'wfxr/minimap.vim',
-  --   event = "BufRead",
-  --   build = "cargo install --locked code-minimap",
-  --   cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
-  --   config = function ()
-  --     vim.cmd ("let g:minimap_width = 7")
-  --     vim.cmd ("let g:minimap_auto_start = 1")
-  --     vim.cmd ("let g:minimap_auto_start_win_enter = 1")
-  --     vim.cmd ("let g:minimap_git_colors = 1")
-  --   end,
-  -- },
+  -------------------- VISUAL EFFECTS -----------------------------------
 
-  -- REALLY cool git usage
-  {
-    "tpope/vim-fugitive",
-    cmd = {
-      "G",
-      "Git",
-      "Gdiffsplit",
-      "Gread",
-      "Gwrite",
-      "Ggrep",
-      "GMove",
-      "GDelete",
-      "GBrowse",
-      "GRemove",
-      "GRename",
-      "Glgrep",
-      "Gedit"
-    },
-    ft = {"fugitive"}
-  },
+  -- Themes
+  'tomasiser/vim-code-dark',
+  'marko-cerovac/material.nvim',
+  'sainnhe/sonokai',
+  'catppuccin/nvim', -- Comes in four flavors
 
-  -- Treesitter stuff
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-  -- Show function on top of page
+  -- Line folding (doesn't really work yet)
+  'pseewald/vim-anyfold',
+
+  -- Show function nesting on top of page
   {
     "romgrk/nvim-treesitter-context",
     config = function()
@@ -69,11 +34,102 @@ lvim.plugins = {
     end
   },
 
+  -- Smooth scrolling
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,              -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+
+  -- Replaces color column with a line character for smaller/cleaner line
+  {
+    'lukas-reineke/virt-column.nvim',
+    config = function()
+      require("virt-column").setup()
+    end
+  },
+
+  -- Sidebar minimap
+  -- {
+  --   'wfxr/minimap.vim',
+  --   event = "BufRead",
+  --   build = "cargo install --locked code-minimap",
+  --   cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
+  --   config = function ()
+  --     vim.cmd ("let g:minimap_width = 7")
+  --     vim.cmd ("let g:minimap_auto_start = 1")
+  --     vim.cmd ("let g:minimap_auto_start_win_enter = 1")
+  --     vim.cmd ("let g:minimap_git_colors = 1")
+  --   end,
+  -- },
+
+
+  -------------------- EDITOR UTILITIES ---------------------------------
+
+  -- Introduces vim surround motion (e.g. cs]" changes surrounding [] to "")
+  'tpope/vim-surround',
+  -- Replicate more complex vim motions with .
+  'tpope/vim-repeat',
+  -- Leap motions with s and S
+  'ggandor/leap.nvim',
+  -- Adjust shiftwidth automatically to buffer defaults
+  'tpope/vim-sleuth',
+
+  -- Use git in vim command (unfavored compared to lazygit) (:G)
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Git",
+      "Gdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
+    },
+    ft = {"fugitive"}
+  },
+
+  -- TMUX plugin for seamless navigation with Ctrl-[hjkl]
+  'christoomey/vim-tmux-navigator',
+
   -- Automatically save on exit insert mode
   {
     "Pocco81/auto-save.nvim",
     config = function()
       require("auto-save").setup()
+    end,
+  },
+
+  -- Peek a line using :{number}
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      }
     end,
   },
 
@@ -92,7 +148,7 @@ lvim.plugins = {
     end,
   },
 
-  -- Preview window?
+  -- Preview window for goto (gp ... )
   {
     "rmagatti/goto-preview",
     config = function()
@@ -112,42 +168,7 @@ lvim.plugins = {
     end
   },
 
-  -- TMUX Utilities
-  -- Navigate seamlessly between tmux and vim
-  "christoomey/vim-tmux-navigator",
-
-  -- Mark files for moving back and forth
-  "ThePrimeagen/harpoon",
-  -- ;u for undo history
-  'mbbill/undotree',
-  -- Keep track of vim usage
-  'wakatime/vim-wakatime',
-
-  -- Utility plugins
-  'tpope/vim-surround',
-  'tpope/vim-repeat',
-  'ggandor/leap.nvim',
-
-  'tpope/vim-sleuth',
-  'mattn/emmet-vim',
-  -- 'LunarWatcher/auto-pairs',
-
-  -- ;o to get symbol outline
-  'simrat39/symbols-outline.nvim',
-
-  -- :{number} to peek a line
-  {
-    "nacro90/numb.nvim",
-    event = "BufRead",
-    config = function()
-      require("numb").setup {
-        show_numbers = true, -- Enable 'number' for the window while peeking
-        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-      }
-    end,
-  },
-
-  -- Better quickfix window
+  -- Better quickfix window (;lq)
   {
     "kevinhwang91/nvim-bqf",
     event = { "BufRead", "BufNew" },
@@ -175,28 +196,7 @@ lvim.plugins = {
     end,
   },
 
-  -- Smooth scrolling
-  {
-    "karb94/neoscroll.nvim",
-    event = "WinScrolled",
-    config = function()
-      require('neoscroll').setup({
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-        hide_cursor = true,          -- Hide cursor while scrolling
-        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil,        -- Default easing function
-        pre_hook = nil,              -- Function to run before the scrolling animation starts
-        post_hook = nil,              -- Function to run after the scrolling animation ends
-      })
-    end
-  },
-
-  -- ChatGPT
+  -- ChatGPT (Disabled bc of limited API usability)
   -- {
   --   "jackMort/ChatGPT.nvim",
   --   event = "VeryLazy",
@@ -214,12 +214,12 @@ lvim.plugins = {
   --     "nvim-telescope/telescope.nvim"
   --   }
   -- },
+
   -- Backseater code with (:Backseat)
   {
     "james1236/backseat.nvim",
     config = function()
       require("backseat").setup({
-        openai_api_key = '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', -- Get yours from platform.openai.com/account/api-keys
         openai_model_id = 'gpt-3.5-turbo',
         -- language = 'english',
         -- split_threshold = 100,
@@ -231,6 +231,9 @@ lvim.plugins = {
       })
     end
   },
+
+  -- Vim game for practicing vim motions (Go to new buffer and run :VimBeGood)
+  'ThePrimeagen/vim-be-good',
 
   -- Hint when you type
   {
@@ -245,22 +248,81 @@ lvim.plugins = {
     end,
   },
 
-  -- Java JDTLS
+  -- Mark files for moving back and forth between different files with ;mf and ;m[1-4]. View harpoons with Alt-m
   {
-    'mfussenegger/nvim-jdtls',
-    event = "BufRead",
+    "ThePrimeagen/harpoon",
+    config = function ()
+      require 'harpoon'
+      local mark = require("harpoon.mark")
+      local ui = require("harpoon.ui")
+
+      lvim.keys.normal_mode['<leader>mf'] = mark.add_file
+      lvim.keys.normal_mode['<M-m>'] = ui.toggle_quick_menu
+
+      lvim.keys.normal_mode['<leader>m1'] = function() ui.nav_file(1) end
+      lvim.keys.normal_mode['<leader>m2'] = function() ui.nav_file(2) end
+      lvim.keys.normal_mode['<leader>m3'] = function() ui.nav_file(3) end
+      lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
+
+      lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
+      lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
+    end
   },
 
-  -- Python Stuff
+  -- Vim Wakatime activity usage tracker
+  -- 'wakatime/vim-wakatime',
+
+
+  -------------------- EXTRA PANELS -------------------------------------
+
+  -- Vim troubleshooter for navigating to bugs (;T...) Config in config.lua
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle"
+  },
+
+  -- Undotree history (;u)
+  'mbbill/undotree',
+
+  -- Symbol outline tool (;o)
+  {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require("symbols-outline").setup({ width = 20 })
+    end
+  },
+
+
+  -------------------- LANGUAGE SPECIFIC PLUGINS ------------------------
+
+  -- %% FRONTEND DEVELOPMENT %%
+
+  -- Automatically close and rename HTML tags
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  -- Use emmet notation with Ctrl-y + ,
+  'mattn/emmet-vim',
+
+  -- %% PYTHON %%
+
   "ChristianChiarulli/swenv.nvim",
   "stevearc/dressing.nvim",
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
 
-  -- Themes
-  'tomasiser/vim-code-dark',
-  'marko-cerovac/material.nvim',
-  'sainnhe/sonokai',
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+  -- %% JAVA %%
+
+  -- Java JDTLS
+  {
+    'mfussenegger/nvim-jdtls',
+    event = "BufRead",
+  },
+
+  -- AWS S3 Edit
+  { 'kiran94/s3edit.nvim', config = true, cmd = "S3Edit"},
 }
