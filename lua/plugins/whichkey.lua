@@ -33,6 +33,9 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 }
 
+-- Evaluate expression while in debugging mode
+lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require'dapui'.eval()<CR>", "Evaluate" }
+
 -- Unbind unused whichkeys
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.which_key.mappings["e"] = {}

@@ -235,15 +235,33 @@ lvim.plugins = {
   -- Vim game for practicing vim motions (Go to new buffer and run :VimBeGood)
   'ThePrimeagen/vim-be-good',
 
-  -- Hint when you type
+  -- Hint when you type (<M-q> to toggle while typing)
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function()
       require"lsp_signature".setup({
         doc_lines = 0,
+        floating_window = false,
         hint_enable = false,
-        floating_window_off_y = -2,
+        floating_window_off_y = function() -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
+          local pumheight = vim.o.pumheight
+          local winline = vim.fn.winline() -- line number in the window
+          local winheight = vim.fn.winheight(0)
+
+          -- window top
+          if winline - 1 < pumheight then
+            return pumheight
+          end
+
+          -- window bottom
+          if winheight - winline < pumheight then
+            return -pumheight
+          end
+          return 0
+        end,
+        toggle_key = '<M-q>',
+        toggle_key_flip_floatwin_setting = true,
       })
     end,
   },
@@ -325,4 +343,9 @@ lvim.plugins = {
 
   -- AWS S3 Edit
   { 'kiran94/s3edit.nvim', config = true, cmd = "S3Edit"},
+
+  -- %% C/C++ %%
+
+  -- Clangd extensions for LSP
+  "p00f/clangd_extensions.nvim",
 }

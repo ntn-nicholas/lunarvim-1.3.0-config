@@ -92,10 +92,11 @@ lvim.builtin.telescope.defaults.mappings = {
 require 'plugins/treesitter'
 require 'plugins/nvimtree'
 require 'plugins/whichkey'
+require 'plugins/tmuxnav'
 
 
 -- LSP Stuff
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "clangd" })
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 -- lvim.lsp.installer.setup.ensure_installed = {

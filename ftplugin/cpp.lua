@@ -8,13 +8,6 @@ lvim.builtin.treesitter.highlight.enable = true
 -- auto install treesitter parsers
 lvim.builtin.treesitter.ensure_installed = { "cpp", "c" }
 
--- Additional Plugins
-table.insert(lvim.plugins, {
-  "p00f/clangd_extensions.nvim",
-})
-
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd" })
-
 -- some settings can only passed as commandline flags, see `clangd --help`
 local clangd_flags = {
   "--background-index",
@@ -95,23 +88,18 @@ lvim.builtin.dap.on_config_done = function(dap)
     },
   }
 
-  dap.configurations.cpp = {
+  dap.configurations.c = {
     {
       name = "Launch file",
       type = "codelldb",
       request = "launch",
       program = function()
-        local path
-        vim.ui.input({ prompt = "Path to executable: ", default = vim.loop.cwd() .. "/build/" }, function(input)
-          path = input
-        end)
-        vim.cmd [[redraw]]
-        return path
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
       end,
       cwd = "${workspaceFolder}",
       stopOnEntry = false,
     },
   }
 
-  dap.configurations.c = dap.configurations.cpp
+  dap.configurations.cpp = dap.configurations.c
 end

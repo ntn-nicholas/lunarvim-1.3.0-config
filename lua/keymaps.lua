@@ -14,8 +14,6 @@ lvim.keys.insert_mode["<A-h>"] = "<Left>"
 lvim.keys.insert_mode["<A-l>"] = "<Right>"
 
 -- Runs a file
-lvim.keys.normal_mode["<F8>c"] = ':make %< && ./%<<CR>'
-lvim.keys.normal_mode["<F8>r"] = ':w<cr><c-w>s<c-w>5+<c-w><c-j>:term<enter>icargo run<CR>'
 lvim.keys.normal_mode["<F8>p"] = ':w<CR>:!python3.9 %<CR>'
 lvim.keys.normal_mode["<F10>"] = function()
   local filetype = vim.bo.filetype
@@ -32,6 +30,10 @@ lvim.keys.normal_mode["<F10>"] = function()
     print(filetype, "cannot be run.")
   end
 end
+
+-- Debugger shortcuts
+lvim.keys.normal_mode["<F5>"] = "<cmd>DapStepInto"
+lvim.keys.normal_mode["<F6>"] = "<cmd>DapStepOver"
 
 -- Change tab
 lvim.keys.normal_mode["<M-l>"] = ':bn<CR>'
