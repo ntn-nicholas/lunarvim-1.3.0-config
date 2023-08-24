@@ -52,10 +52,6 @@ lvim.keys.normal_mode['<leader>m4'] = function() ui.nav_file(4) end
 lvim.keys.normal_mode['<c-.>'] = function() require'luasnip'.jump(-1) end
 lvim.keys.normal_mode['<c-/>'] = function() require'luasnip'.jump(1) end
 
--- Setup tmux navigator
--- Disable tmux navigator when zooming the Vim pane
-vim.g.tmux_navigator_disable_when_zoomed = 1
-
 -- Setup catppuccin
 require("catppuccin").setup({
     integrations = {
