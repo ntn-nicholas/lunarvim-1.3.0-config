@@ -8,7 +8,7 @@ local home = os.getenv "HOME"
 local workspace_path = home .. "/.local/share/lunarvim/jdtls-workspace/"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = workspace_path .. project_name
-local root_dir = require("jdtls.setup").find_root({ "packageInfo" }, "Config")
+local root_dir = require("jdtls.setup").find_root({ 'mvnw', 'gradlew', '.git' })
 
 -- Determine OS
 local os_config = "linux"
@@ -36,8 +36,7 @@ vim.list_extend(
 lvim.builtin.dap.active = true
 local config = {
   cmd = {
-    -- 💀💀
-    "/usr/lib/jvm/java-17-amazon-corretto.x86_64/bin/java",
+    "java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -49,11 +48,11 @@ local config = {
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
-    "-javaagent:" .. home .. "/.local/share/lvim/mason/packages/jdtls/lombok.jar",
+    "-javaagent:" .. mason_path .. "packages/jdtls/lombok.jar",
     "-jar",
-    vim.fn.glob(home .. "/.local/share/lvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+    vim.fn.glob(mason_path .. "packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration",
-    home .. "/.local/share/lvim/mason/packages/jdtls/config_" .. os_config,
+    mason_path .. "packages/jdtls/config_" .. os_config,
     "-data",
     workspace_dir,
   },
@@ -69,9 +68,8 @@ local config = {
         updateBuildConfiguration = "interactive",
         runtimes = {
           {
-            name = "JavaSE-1.8",
-            -- 💀💀
-            path = "/usr/lib/jvm/java-1.8.0-amazon-corretto",
+            name = "JavaSE-11",
+            path = "/usr/lib/jvm/openjdk-11"
           },
         },
       },
@@ -102,6 +100,9 @@ local config = {
   init_options = {
     bundles = bundles
   },
+  on_init = function(client)
+    client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+  end
 }
 
 config["on_attach"] = function(client, bufnr)
@@ -160,7 +161,6 @@ local mappings = {
     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
-    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
   },
 }
 
