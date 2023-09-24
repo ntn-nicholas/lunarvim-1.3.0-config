@@ -9,9 +9,11 @@ lvim.keys.normal_mode["N"] = "Nzzzv"
 lvim.keys.insert_mode["jk"] = '<Esc><Esc>'
 lvim.keys.insert_mode["kj"] = '<Esc><Esc>'
 
--- move the cursor without leaving insert mode
-lvim.keys.insert_mode["<A-h>"] = "<Left>"
-lvim.keys.insert_mode["<A-l>"] = "<Right>"
+-- Move the cursor without leaving insert mode
+lvim.keys.insert_mode["<M-h>"] = '<Left>'
+lvim.keys.insert_mode["<M-l>"] = '<Right>'
+lvim.keys.insert_mode["<M-j>"] = '<Down>'
+lvim.keys.insert_mode["<M-k>"] = '<Up>'
 
 -- Runs a file
 lvim.keys.normal_mode["<F8>"] = function()
