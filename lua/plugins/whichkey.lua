@@ -36,6 +36,17 @@ lvim.builtin.which_key.mappings["t"] = {
 -- Evaluate expression while in debugging mode
 lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require'dapui'.eval()<CR>", "Evaluate" }
 
+-- Diffview keybinds
+lvim.builtin.which_key.mappings["gd"] = { "<cmd>DiffviewOpen<CR>", "Open Git Diff" }
+lvim.builtin.which_key.mappings["gD"] = {
+  function()
+    inp = vim.fn.input("Pick a commit range: ", "HEAD")
+    vim.cmd("DiffviewOpen " .. inp)
+  end,
+  "Open Git Diff with Range"
+}
+lvim.builtin.which_key.mappings["gq"] = { "<cmd>DiffviewClose<CR>", "Close Git Diff" }
+
 -- Unbind unused whichkeys
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.which_key.mappings["e"] = {}

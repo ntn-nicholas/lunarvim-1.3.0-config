@@ -1,6 +1,3 @@
--- Luasnip snippet jumping
-lvim.keys.insert_mode['<c-.>'] = ":lua require'luasnip'.jump(1)<cr>"
-
 -- Keeps target word on center while searching
 lvim.keys.normal_mode["n"] = "nzzzv"
 lvim.keys.normal_mode["N"] = "Nzzzv"
@@ -48,3 +45,10 @@ lvim.keys.normal_mode["<F6>"] = "<CMD>DapStepOver<CR>"
 -- Change tab
 lvim.keys.normal_mode["<M-l>"] = ':bn<CR>'
 lvim.keys.normal_mode["<M-h>"] = ':bN<CR>'
+
+-- DiffviewFileHistory
+lvim.keys.visual_mode[";gh"] = ':DiffviewFileHistory<CR>'
+lvim.keys.visual_mode[";gH"] = ':DiffviewFileHistory --'
+
+-- Unbind default git diff
+lvim.keys.normal_mode[";gd"] = false

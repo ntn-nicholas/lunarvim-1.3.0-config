@@ -110,6 +110,9 @@ lvim.plugins = {
     ft = {"fugitive"}
   },
 
+  -- Git diff tool (Call with :DiffviewOpen [git rev] [options])
+  'sindrets/diffview.nvim',
+
   -- TMUX plugin for seamless navigation with Ctrl-[hjkl]
   'christoomey/vim-tmux-navigator',
 
