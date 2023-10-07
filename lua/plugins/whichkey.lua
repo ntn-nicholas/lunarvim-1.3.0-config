@@ -37,7 +37,7 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require'dapui'.eval()<CR>", "Evaluate" }
 
 -- Diffview keybinds
-lvim.builtin.which_key.mappings["gd"] = { "<cmd>DiffviewOpen<CR>", "Open Git Diff" }
+lvim.builtin.which_key.mappings["g"]["d"] = { "<cmd>DiffviewOpen<CR>", "Open Git Diff" }
 lvim.builtin.which_key.mappings["gD"] = {
   function()
     inp = vim.fn.input("Pick a commit range: ", "HEAD")
@@ -45,6 +45,10 @@ lvim.builtin.which_key.mappings["gD"] = {
   end,
   "Open Git Diff with Range"
 }
+lvim.keys.normal_mode[";gH"] = ':DiffviewFileHistory '
+lvim.keys.visual_mode[";gh"] = ':DiffviewFileHistory<CR>'
+lvim.keys.visual_mode[";gH"] = ':DiffviewFileHistory '
+lvim.builtin.which_key.mappings["gh"] = { "<cmd>DiffviewFileHistory %<CR>", "Git History" }
 lvim.builtin.which_key.mappings["gq"] = { "<cmd>DiffviewClose<CR>", "Close Git Diff" }
 
 -- Unbind unused whichkeys

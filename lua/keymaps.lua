@@ -46,9 +46,10 @@ lvim.keys.normal_mode["<F6>"] = "<CMD>DapStepOver<CR>"
 lvim.keys.normal_mode["<M-l>"] = ':bn<CR>'
 lvim.keys.normal_mode["<M-h>"] = ':bN<CR>'
 
--- DiffviewFileHistory
-lvim.keys.visual_mode[";gh"] = ':DiffviewFileHistory<CR>'
-lvim.keys.visual_mode[";gH"] = ':DiffviewFileHistory --'
+-- Hunk jumping
+lvim.keys.normal_mode["]c"] = ']czz'
+lvim.keys.normal_mode["[c"] = '[czz'
 
--- Unbind default git diff
-lvim.keys.normal_mode[";gd"] = false
+-- DiffviewFileHistory
+lvim.keys.visual_mode["<leader>gh"] = ':DiffviewFileHistory<CR>'
+lvim.keys.visual_mode["<leader>gH"] = ':DiffviewFileHistory '
