@@ -15,7 +15,7 @@ require 'opts'
 ------ PLUGINS ------
 require 'my_plugins'
 
------- KEYBINDS ------
+----- KEYBINDS ------
 require 'keymaps'
 
 
@@ -92,7 +92,7 @@ require 'plugins/tmuxnav'
 
 
 -- LSP Stuff
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "clangd" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "clangd", "rust_analyzer" })
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
