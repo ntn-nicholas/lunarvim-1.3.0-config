@@ -14,4 +14,4 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell", "help" }
-lvim.builtin.treesitter.highlight.enable = true
+lvim.builtin.treesitter.highlight.disable = true
