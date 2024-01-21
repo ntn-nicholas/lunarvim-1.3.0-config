@@ -291,7 +291,7 @@ lvim.plugins = {
   },
 
   -- Vim Wakatime activity usage tracker
-  'wakatime/vim-wakatime',
+  -- 'wakatime/vim-wakatime',
 
 
   -------------------- EXTRA PANELS -------------------------------------
