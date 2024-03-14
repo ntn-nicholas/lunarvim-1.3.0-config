@@ -400,4 +400,8 @@ lvim.plugins = {
     end,
     branch = 'legacy',
   },
+
+  -- %% GO %%
+  "olexsmir/gopher.nvim",
+  "leoluz/nvim-dap-go",
 }

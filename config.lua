@@ -92,7 +92,7 @@ require 'plugins/tmuxnav'
 
 
 -- LSP Stuff
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "clangd", "rust_analyzer" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "clangd", "rust_analyzer", "gopls" })
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
@@ -128,6 +128,8 @@ formatters.setup {
         ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
         filetypes = { "typescript", "typescriptreact" },
     },
+    { command = "goimports", filetypes = { "go" } },
+    { command = "gofumpt", filetypes = { "go" } },
 }
 
 -- -- set additional linters
